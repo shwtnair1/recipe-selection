@@ -6,6 +6,7 @@ The Recipe Selection Page is the core experience of our digital product. Every w
 
 For this challenge, we want you to get familiar with our day-to-day, so we have provided a minimalistic implementation of our Recipe Selection Page, some of the main components from our Design System, and a set of tasks for you.
 
+Please treat this test as if you were part of a team and you have to tackle this feature request; the change would be reviewed by one of your teammates and would go to production.
 
 ## INSTRUCTIONS
 
