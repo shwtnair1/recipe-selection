@@ -25,13 +25,20 @@ Please treat this test as if you were part of a team and you have to tackle this
 *   **Do not eject** the application.
 *   Except for `/src/data/hellofreshBox.js`, feel free to **change any file, variable, or value** to achieve your solution.
 
-## WHAT WE LOOK OUT FOR
+### OUR DEVELOPMENT VISION
 
-1. Meaningful unit tests.
-2. An accessibile user interface.
-3. A coherent approach to design and theming.
-4. Modular and functional JavaScript.
-5. Code readability and minimal complexity.
+At Hellofresh we value the best experience for our users as well as our engineers when coding. We consider a good development process one that
+
+* considers people's disabilities and limitations
+* is well documented and has maintainability in mind
+* has a good version control and traceability 
+* applies the best standards of javascript
+* considers today's performance requirements
+* is self protected and well tested
+* knows the standards of a theme library
+* applies functional programming to its best
+
+We hope you can share the same vision as we do, as well as showcase your own expertise and knowledge! As well as have fun coding this test!
 
 ## TASKS
 
