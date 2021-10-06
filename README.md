@@ -10,8 +10,6 @@ Please treat this test as if you were part of a team and you have to tackle this
 
 ## INSTRUCTIONS
 
-
-
 1. Clone this repository and install the dependencies using `yarn`
 2. Create a new branch named dev `git checkout -b dev`
 3. Complete the tasks described in this document by applying your solution and committing code.
@@ -19,18 +17,28 @@ Please treat this test as if you were part of a team and you have to tackle this
 5. After creating your pull request, please send the link via email to the recruiter you're in touch with.
 
 
-## CAVEATS & RECOMMENDATIONS
-
-
+## RECOMMENDATIONS
 
 *   For this challenge, **no data persistence is required**; refreshing the page should reset the recipe selection.
 *   We provide you a custom hook, **useFetchMenu**, to simulate data fetching from a remote server. It is a simple timeout function that returns static JSON data.
 *   This repository is based on create-react-app, you can use `yarn start` to run the application.
 *   **Do not eject** the application.
-*   **Do write unit tests for your solution!**
 *   Except for `/src/data/hellofreshBox.js`, feel free to **change any file, variable, or value** to achieve your solution.
-*   You can download the [editorconfig plugin](https://editorconfig.org/#download) for a better development experience
 
+### OUR DEVELOPMENT VISION
+
+At Hellofresh we value the best experience for our users as well as our engineers when coding. We consider a good development process one that
+
+* considers people's disabilities and limitations
+* is well documented and has maintainability in mind
+* has a good version control and traceability 
+* applies the best standards of javascript
+* considers today's performance requirements
+* is self protected and well tested
+* knows the standards of a theme library
+* applies functional programming to its best
+
+We hope you can share the same vision as we do, as well as showcase your own expertise and knowledge! As well as have fun coding this test!
 
 ## TASKS
 
