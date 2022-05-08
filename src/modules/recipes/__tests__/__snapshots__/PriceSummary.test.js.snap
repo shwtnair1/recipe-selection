@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PriceSummary renders 1`] = `ShallowWrapper {}`;
+
+exports[`PriceSummary renders when there is no summary/totalPrice passed 1`] = `ShallowWrapper {}`;
