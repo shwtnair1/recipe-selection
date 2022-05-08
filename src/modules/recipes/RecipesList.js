@@ -31,8 +31,26 @@ const Recipes = () => {
   const maxRecipesSelected = recipeSelectCount === data.max ? true :false;
 
   // price summary and total price, feel free to remove or rename these variables and values.
-  const summary = [];
-  const totalPrice = parseRawPrice(0);
+  const summary = calculatePriceSummary();
+  const totalPrice = parseRawPrice(summary.items ? ((summary.items.reduce((total,item)=>total+item.price , 0)) + data.shippingPrice):0);
+  
+  function calculatePriceSummary(){
+    let selectedRecipes = recipes.length > 0 ? recipes.filter(recipe => recipe.selected > 0) :[];
+    let priceSummary={};
+    if(selectedRecipes.length > 0){
+      priceSummary.items =  selectedRecipes.map(recipe=>{
+        return {
+          id:recipe.id,
+          name:recipe.name,
+          price: (data.baseRecipePrice + recipe.extraCharge) * recipe.selected,
+          selected: recipe.selected
+        }
+      });
+      priceSummary.shippingPrice = data.shippingPrice;
+    }
+    return priceSummary;
+   
+  }
 
   React.useEffect(() => {
     const { recipes: fetchedRecipes } = data;

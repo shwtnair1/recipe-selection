@@ -26,7 +26,7 @@ const PriceSummary = ({ summary, totalPrice }) => {
       <hr style={hrStyle}/>
       <Flex justifyContent='space-between' marginTop='8px' fontSize='16px' lineHeight='27px'>
             <Text fontWeight={600}>Total</Text>
-            <Text fontWeight={600}>{parseRawPrice(summary.total)}</Text>
+            <Text fontWeight={600}>{totalPrice}</Text>
       </Flex>
   </Box>
 )
