@@ -13,13 +13,22 @@ const Recipes = () => {
   const [recipes, setRecipes] = React.useState([]);
   const { data, loading } = useFetchHelloFreshBox();
 
-  // add/remove recipe, feel free to remove or rename these these variables and values.
-  const handleAddRecipe = () => null;
-  const handleRemoveRecipe = () => null;
+  // Add recipe based on recipe Id passed from the event calling this function.
+  const handleAddRecipe = (recipeId) => {
+    setRecipes(recipes.map(recipe => recipe.id === recipeId ? {...recipe,selected:recipe.selected+1} : recipe));
+  };
 
-  // min/max recipe boundaries, feel free to remove or rename these variables and values.
-  const minRecipesSelected = false;
-  const maxRecipesSelected = false;
+  // Remove recipe based on recipe Id passed from the event calling this function.
+  const handleRemoveRecipe = (recipeId) => {
+    setRecipes(recipes.map(recipe => recipe.id === recipeId ? {...recipe,selected:recipe.selected-1} : recipe));
+  };
+  
+  // Recipe Select Count : Calculates and sets the total no. of recipes selected.
+  let recipeSelectCount = recipes.length > 0 ? recipes.reduce((total,recipe)=>total + recipe.selected , 0) : 0;
+  // Min recipe boundary : if min recipe boundary limit of the boundary is reached , set to true .
+  const minRecipesSelected = recipeSelectCount >= data.min ? true :false;
+  //Max recipe boundary : if max recipes limit of the box is reached , set to true .
+  const maxRecipesSelected = recipeSelectCount === data.max ? true :false;
 
   // price summary and total price, feel free to remove or rename these variables and values.
   const summary = [];
