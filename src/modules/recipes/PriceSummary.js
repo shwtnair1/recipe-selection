@@ -13,6 +13,7 @@ let hrStyle={
 const PriceSummary = ({ summary, totalPrice }) => {
   const shippingPrice = summary && summary.shippingPrice ? summary.shippingPrice : 0;
   const items = summary && summary.items? summary.items : []; 
+  totalPrice = totalPrice || '$0.00';
   return(
   <Box width={['290px', '450px']} padding='16px'>
       {items.length >0 && items.map((item)=>{
