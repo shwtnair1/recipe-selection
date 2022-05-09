@@ -20,9 +20,20 @@ describe('PriceSummary',()=>{
     expect(wrapper).toMatchSnapshot();
   })
 
-  it("renders when there is no summary/totalPrice passed",()=>{
+  //Displays shipping Price and total price as $0.00
+  it("renders without crashing, when there is no summary/totalPrice passed",()=>{
     const wrapper = shallow(<PriceSummary />) ;
   expect(wrapper).toMatchSnapshot();
+
+  expect(wrapper.find({"data-testid":"item-list"})).toHaveLength(0);
+
+  expect(wrapper.find({"data-testid":"shipping-price"})).toHaveLength(1);
+  let children = wrapper.find({"data-testid":"shipping-price"}).find(Text);
+  expect(children.at(1).text()).toBe(parseRawPrice(0));
+  
+  expect(wrapper.find({"data-testid":"total-price"})).toHaveLength(1);
+  children = wrapper.find({"data-testid":"total-price"}).find(Text);
+  expect(children.at(1).text()).toBe(parseRawPrice(0));
 })
 
 it("renders when there is no summary Items passed",()=>{
