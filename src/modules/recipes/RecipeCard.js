@@ -46,7 +46,7 @@ const RecipeCard = ({
     </Box>
     {selected ? (
       <SelectedRecipeFooter
-        data-testid='selected-footer'
+        data-testid="selected-footer"
         recipeId={id}
         yields={yields}
         selected={selected}
@@ -57,7 +57,7 @@ const RecipeCard = ({
       />
     ) : (
       <UnselectedRecipeFooter
-        data-testid='unselected-footer'
+        data-testid="unselected-footer"
         recipeId={id}
         price={extraCharge && extraCharge}
         selected={selected}
@@ -127,27 +127,34 @@ const SelectedRecipeFooter = ({
   yields,
   maxRecipesSelected,
   handleAddRecipe,
-  handleRemoveRecipe
+  handleRemoveRecipe,
 }) => {
-  let isAddDisabled = selectionLimit ? selected === selectionLimit ? true : false : false;
+  let isAddDisabled = selected === selectionLimit ? true : false;
   return (
-  <Flex backgroundColor="primary_600" justifyContent="space-between" alignItems="center">
-    <SelectionButton data-testid="selection-remove-button" onClick={() => handleRemoveRecipe(recipeId)} title="Decrease quantity">
-      <IconMinusCircle />
-    </SelectionButton>
-    <Box color="white">
-      <Text textAlign="center" fontWeight="bold" fontFamily="secondary" fontSize="md">
-        {selected} in your box
-      </Text>
-      <Text textAlign="center" fontFamily="secondary" fontSize="sm">
-        ({selected * yields} servings)
-      </Text>
-    </Box>
-    <SelectionButton data-testid="selection-add-button" onClick={() => handleAddRecipe(recipeId)} title="Increase quantity" disabled={ isAddDisabled || maxRecipesSelected}>
-      <IconPlusCircle />
-    </SelectionButton>
-  </Flex>
-  )
+    <Flex backgroundColor="primary_600" justifyContent="space-between" alignItems="center">
+      <SelectionButton
+        data-testid="selection-remove-button"
+        onClick={() => handleRemoveRecipe(recipeId)}
+        title="Decrease quantity">
+        <IconMinusCircle />
+      </SelectionButton>
+      <Box color="white">
+        <Text textAlign="center" fontWeight="bold" fontFamily="secondary" fontSize="md">
+          {selected} in your box
+        </Text>
+        <Text textAlign="center" fontFamily="secondary" fontSize="sm">
+          ({selected * yields} servings)
+        </Text>
+      </Box>
+      <SelectionButton
+        data-testid="selection-add-button"
+        onClick={() => handleAddRecipe(recipeId)}
+        title="Increase quantity"
+        disabled={isAddDisabled || maxRecipesSelected}>
+        <IconPlusCircle />
+      </SelectionButton>
+    </Flex>
+  );
 };
 
 SelectedRecipeFooter.propTypes = {

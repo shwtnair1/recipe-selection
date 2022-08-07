@@ -15,41 +15,53 @@ const Recipes = () => {
 
   // Add recipe based on recipe Id passed from the event calling this function.
   const handleAddRecipe = (recipeId) => {
-    setRecipes(recipes.map(recipe => recipe.id === recipeId ? {...recipe,selected:recipe.selected+1} : recipe));
+    setRecipes(
+      recipes.map((recipe) =>
+        recipe.id === recipeId ? { ...recipe, selected: recipe.selected + 1 } : recipe
+      )
+    );
   };
 
   // Remove recipe based on recipe Id passed from the event calling this function.
   const handleRemoveRecipe = (recipeId) => {
-    setRecipes(recipes.map(recipe => recipe.id === recipeId ? {...recipe,selected:recipe.selected-1} : recipe));
+    setRecipes(
+      recipes.map((recipe) =>
+        recipe.id === recipeId ? { ...recipe, selected: recipe.selected - 1 } : recipe
+      )
+    );
   };
-  
+
   // Recipe Select Count : Calculates and sets the total no. of recipes selected.
-  let recipeSelectCount = recipes.length > 0 ? recipes.reduce((total,recipe)=>total + recipe.selected , 0) : 0;
+  let recipeSelectCount =
+    recipes.length > 0 ? recipes.reduce((total, recipe) => total + recipe.selected, 0) : 0;
   // Min recipe boundary : if min recipe boundary limit of the boundary is reached , set to true .
-  const minRecipesSelected = recipeSelectCount >= data.min ? true :false;
+  const minRecipesSelected = recipeSelectCount >= data.min ? true : false;
   //Max recipe boundary : if max recipes limit of the box is reached , set to true .
-  const maxRecipesSelected = recipeSelectCount === data.max ? true :false;
+  const maxRecipesSelected = recipeSelectCount === data.max ? true : false;
 
   // price summary and total price, feel free to remove or rename these variables and values.
   const summary = calculatePriceSummary();
-  const totalPrice = parseRawPrice(summary.items ? ((summary.items.reduce((total,item)=>total+item.price , 0)) + data.shippingPrice):0);
-  
-  function calculatePriceSummary(){
-    let selectedRecipes = recipes.length > 0 ? recipes.filter(recipe => recipe.selected > 0) :[];
-    let priceSummary={};
-    if(selectedRecipes.length > 0){
-      priceSummary.items =  selectedRecipes.map(recipe=>{
+  const totalPrice = parseRawPrice(
+    summary.items
+      ? summary.items.reduce((total, item) => total + item.price, 0) + data.shippingPrice
+      : 0
+  );
+
+  function calculatePriceSummary() {
+    let selectedRecipes = recipes.length > 0 ? recipes.filter((recipe) => recipe.selected > 0) : [];
+    let priceSummary = {};
+    if (selectedRecipes.length > 0) {
+      priceSummary.items = selectedRecipes.map((recipe) => {
         return {
-          id:recipe.id,
-          name:recipe.name,
+          id: recipe.id,
+          name: recipe.name,
           price: (data.baseRecipePrice + recipe.extraCharge) * recipe.selected,
-          selected: recipe.selected
-        }
+          selected: recipe.selected,
+        };
       });
       priceSummary.shippingPrice = data.shippingPrice;
     }
     return priceSummary;
-   
   }
 
   React.useEffect(() => {
@@ -68,12 +80,12 @@ const Recipes = () => {
     <>
       <Row>
         <Col sm={6}>
-          <h3>{data.headline}</h3>
+          <h3 data-testid="headline">{data.headline}</h3>
         </Col>
         <Col sm={6}>
           <Flex alignItems="center" justifyContent="flex-end">
             <Box textAlign="right" mr="xs">
-              <h3>{totalPrice}</h3>
+              <h3 data-testid="total-price">{totalPrice}</h3>
             </Box>
             <PriceInfo summary={summary} totalPrice={totalPrice} />
           </Flex>
